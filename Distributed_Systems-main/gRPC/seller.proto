@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service seller{
+    rpc ReceiveNotification(ReceiveNotificationRequest) returns (ReceiveNotificationResponse) {}
+}
+
+message ReceiveNotificationRequest {
+    string notification_message = 1;
+    string product_name = 2;
+    int32 quantity = 3;
+    string buyer_address = 4;
+}
+
+message ReceiveNotificationResponse {
+    bool success = 1;
+}

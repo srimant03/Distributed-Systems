@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service buyer{
+    rpc ReceiveNotification_buyer(ReceiveNotificationRequest_buyer) returns (ReceiveNotificationResponse_buyer);
+}
+
+message ReceiveNotificationRequest_buyer{
+    string product_name = 1;
+    string category = 2;
+    float price = 3;
+    uint32 quantity = 4;
+    //string description = 5;
+    //string seller_address = 6;
+    //string rating = 7;*/
+}
+
+message ReceiveNotificationResponse_buyer{
+    bool success = 1;
+}

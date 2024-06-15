@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+service market{
+    //seller operations
+
+    rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+    rpc RegisterSeller(RegisterSellerRequest) returns (RegisterSellerResponse) {}
+    rpc SellItem(SellItemRequest) returns (SellItemResponse) {}
+    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse) {}
+    rpc DisplaySellerItems(DisplaySellerItemsRequest) returns (DisplaySellerItemsResponse) {}
+
+    //buyer operations
+    rpc SearchItem(SearchItemRequest) returns (SearchItemResponse) {}
+    rpc BuyItem(BuyItemRequest) returns (BuyItemResponse) {}
+    rpc AddToWishList(AddToWishListRequest) returns (AddToWishListResponse) {}
+    rpc RateItem(RateItemRequest) returns (RateItemResponse) {}
+   
+}
+
+message HelloRequest{
+    string name = 1;
+}
+
+message HelloReply{
+    string message = 1;
+}
+
+message RegisterSellerRequest{
+    string ip_address = 1;
+    string uuid = 2;
+}
+
+message RegisterSellerResponse{
+    string message = 1;
+}
+
+message SellItemRequest{
+    string product_name = 1;
+    string category = 2;
+    int32 quantity = 3;
+    float price = 4;
+    string description = 5;
+    string seller_address = 6;
+    string seller_uuid = 7;
+}
+
+message SellItemResponse{
+    string message = 1;
+}
+
+message UpdateItemRequest{
+    string product_name = 1;
+    float price = 2;
+    int32 quantity = 3;
+    string seller_address = 4;
+    string seller_uuid = 5;
+}
+
+message UpdateItemResponse{
+    string message = 1;
+}
+
+message DeleteItemRequest{
+    string product_name = 1;
+    string seller_address = 2;
+    string seller_uuid = 3;
+}
+
+message DeleteItemResponse{
+    string message = 1;
+}
+
+message DisplaySellerItemsRequest{
+    string seller_uuid = 1;
+}
+
+message DisplaySellerItemsResponse{
+    message Item {
+        string product_name = 1;
+        string category = 2;
+        int32 quantity = 3;
+        float price = 4;
+        string description = 5;
+        string seller_address = 6;
+        string seller_uuid = 7;
+        int32 rating = 8;
+    }
+    repeated Item items = 1;
+}
+
+message SearchItemRequest{
+    string product_name = 1;
+    string category = 2;
+}
+
+message SearchItemResponse{
+    message Item{
+        string product_name = 1;
+        string category = 2;
+        int32 quantity = 3;
+        float price = 4;
+        string description = 5;
+        string seller_address = 6;
+        string seller_uuid = 7;
+        int32 rating = 8;
+    }
+    repeated Item items = 1;
+}
+
+message BuyItemRequest{
+    string product_name = 1;
+    int32 quantity = 2;
+    string buyer_address = 3;
+    string seller_address = 4;
+}
+
+message BuyItemResponse{
+    string message = 1;
+}
+
+message AddToWishListRequest{
+    string product_name = 1;
+    string buyer_address = 2;
+    string seller_address = 3;
+}
+
+message AddToWishListResponse{
+    string message = 1;
+}
+
+message RateItemRequest{
+    string product_name = 1;
+    int32 rating = 2;
+    string seller_address = 3;
+}
+
+message RateItemResponse{
+    string message = 1;
+}
+
+
+
+
+
+
+
